@@ -1,0 +1,7 @@
+roboflow
+scikit-learn
+super-gradients
+pytube
+supervision
+opencv-python
+torch
