@@ -16,19 +16,23 @@ def load_image(image_file):
 
     return img, temp.name
 
+with st.sidebar:
+    st.title('Smokey Flare Detection')
+    st.write('Please upload an image of an offshore platform to detect smoke.')
+    st.write('The model will identify smoke patterns in the image.')
+    st.write('Click the "Detect" button to see the results.')
 
+    st.header("How It Works")
+    st.markdown("""
+    Our smoke detection model is trained on thousands of images from oil platforms, 
+    using a deep learning framework to identify smoke patterns even in challenging conditions. 
+    By implementing this model, we aim to use AI to identify smokey flaring situations and consequently
+    trigger investigation to mitigate these events.
+    """)
 st.title('Smokey Flare Detection Demo')
 st.write("This demo shows how our smoke detection model works on the offshore flaring.")
 # Documentation
-st.header("How It Works")
-st.write("""
-Our smoke detection model is trained on thousands of images from oil platforms, 
-using a deep learning framework to identify smoke patterns even in challenging conditions. 
-By implementing this model, we aim to use AI to identify smokey flaring situations and consequently
-trigger investigation to mitigate these events.
-""")
-st.divider()
-st.write("To use the model, upload an image of an offshore platform and click the 'Detect' button.")
+
 
 image_file = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
 if image_file is not None:
