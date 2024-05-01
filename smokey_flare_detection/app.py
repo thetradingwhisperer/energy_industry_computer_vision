@@ -17,7 +17,7 @@ def load_image(image_file):
     return img, temp.name
 
 with st.sidebar:
-    st.title('Smokey Flare Detection')
+    st.title('Smokey Flare Detection app')
     st.write('Please upload an image of an offshore platform to detect smoke.')
     st.write('The model will identify smoke patterns in the image.')
     st.write('Click the "Detect" button to see the results.')
@@ -29,7 +29,7 @@ with st.sidebar:
     By implementing this model, we aim to use AI to identify smokey flaring situations and consequently
     trigger investigation to mitigate these events.
     """)
-st.title('Smokey Flare Detection Demo')
+st.title('Smokey Flare Detection with AI')
 st.write("This demo shows how our smoke detection model works on the offshore flaring.")
 # Documentation
 st.divider()
