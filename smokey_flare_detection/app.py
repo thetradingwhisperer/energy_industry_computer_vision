@@ -32,9 +32,11 @@ with st.sidebar:
 st.title('Smokey Flare Detection Demo')
 st.write("This demo shows how our smoke detection model works on the offshore flaring.")
 # Documentation
+st.divider()
 
 
 image_file = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
+confidence_threshold = st.slider('Set detection confidence Threshold', 0, 100, 40)
 if image_file is not None:
     image, image_path = load_image(image_file)
     #Define 2 columns
@@ -48,7 +50,7 @@ if image_file is not None:
             with col2:
                 # Assuming 'detect_smoke' is a function that processes the image and returns an annotated one
                 col2.header('Processed Image')
-                processed_image = make_inference(image_path)
+                processed_image = make_inference(image_path, confidence=confidence_threshold)
                 processed_image = cv2.cvtColor(processed_image, cv2.COLOR_BGR2RGB)
                 st.image(processed_image, 
                     caption='Processed Image with Detected Smoke', use_column_width=True)
