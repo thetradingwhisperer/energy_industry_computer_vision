@@ -38,7 +38,7 @@ def make_inference(image_path, confidence=40):
                                                 labels=labels)
 
     sv.plot_image(image=annotated_image, size=(10, 7))
-    return annotated_image
+    return annotated_image, labels
 
 if __name__ == "__main__":
     main()

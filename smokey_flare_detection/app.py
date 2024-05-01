@@ -46,14 +46,17 @@ if image_file is not None:
         col1.header('Original Image')
         #st.image(image, caption='Uploaded Image', use_column_width=True)
         st.image(image_path, caption='Uploaded Image', use_column_width=True)
+        #add empty space
+        st.write('')
         if st.button('Detect'):
             with col2:
                 # Assuming 'detect_smoke' is a function that processes the image and returns an annotated one
                 col2.header('Processed Image')
-                processed_image = make_inference(image_path, confidence=confidence_threshold)
+                processed_image, labels = make_inference(image_path, confidence=confidence_threshold)
                 processed_image = cv2.cvtColor(processed_image, cv2.COLOR_BGR2RGB)
                 st.image(processed_image, 
                     caption='Processed Image with Detected Smoke', use_column_width=True)
+                st.html(f'<p style="color:red;"> Results: {labels} detected in the image</p>')
 
 
 
