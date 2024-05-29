@@ -43,7 +43,7 @@ if image_file is not None:
     col1, col2 = st.columns(2)
 
     with col1:
-        col1.header('Original Image')
+        col1.markdown('### Original Image')
         #st.image(image, caption='Uploaded Image', use_column_width=True)
         st.image(image_path, caption='Uploaded Image', use_column_width=True)
         #add empty space
@@ -51,7 +51,7 @@ if image_file is not None:
         if st.button('Detect'):
             with col2:
                 # Assuming 'detect_smoke' is a function that processes the image and returns an annotated one
-                col2.header('Processed Image')
+                col2.markdown('### AI Processed Image')
                 processed_image, labels = make_inference(image_path, confidence=confidence_threshold)
                 processed_image = cv2.cvtColor(processed_image, cv2.COLOR_BGR2RGB)
                 st.image(processed_image, 
