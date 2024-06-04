@@ -75,7 +75,7 @@ with tab2:
         col1_2, col2_2 = st.columns(2)
 
         with col1_2:
-            col1.markdown('###### Original Image')
+            col1_2.markdown('###### Original Image')
             #st.image(image, caption='Uploaded Image', use_column_width=True)
             st.image(image_path, caption='Uploaded Image', use_column_width=True)
             #add empty space
@@ -83,11 +83,11 @@ with tab2:
             if st.button('Detect', key='detect_ringelmaan'):
                 with col2_2:
                     # Assuming 'detect_smoke' is a function that processes the image and returns an annotated one
-                    col2.markdown('###### AI Processed Image')
+                    col2_2.markdown('###### AI Processed Image')
                     processed_image, labels = make_inference_ringelmaan(image_path, confidence=confidence_threshold)
                     processed_image = cv2.cvtColor(processed_image, cv2.COLOR_BGR2RGB)
                     st.image(processed_image, 
-                        caption='Processed Image with Detected Smoke', use_column_width=True)
+                        caption='AI Processed Image with detection', use_column_width=True)
                     st.html(f'<p style="color:red;"> Results: {labels} detected in the image</p>')
 
 
