@@ -46,7 +46,7 @@ def make_inference_ringelmaan(image_path, confidence=40):
     #Load model
     rf = Roboflow(api_key="eytDtQ1Q75OZyEFEgHNF")
     project = rf.workspace().project("smokey-flaring-detection")
-    model = project.version(1).model
+    model = project.version(2).model
 
     result = model.predict(image_path, confidence=confidence).json()
     image = cv2.imread(image_path)
