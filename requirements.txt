@@ -6,3 +6,4 @@ supervision
 opencv-python
 torch
 streamlit
+inference

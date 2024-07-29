@@ -19,20 +19,13 @@ def load_image(image_file):
 with st.sidebar:
     st.title('Smokey Flare Detection with Vision AI')
     st.write('1) Please upload an image of an offshore platform to detect smoke.')
-    st.write('2) Choose the type of detection "normal" or "ringelmaan"')
+    st.write('2) Choose the type of detection "Vision AI model I" or "Vision AI model II."')
     st.write('3) Click the "Detect" button to see the vision ai detection results.')
     st.divider()
 
     confidence_threshold = st.slider('Set detection confidence Threshold', 0, 100, 40)
 
 
-    st.header("How It Works")
-    st.markdown("""
-    Our smoke detection model is trained on thousands of images from oil platforms, 
-    using a deep learning framework to identify smoke patterns even in challenging conditions. 
-    By implementing this model, we aim to use AI to identify smokey flaring situations and consequently
-    trigger investigation to mitigate these events.
-    """)
 #st.subheader('Smokey Flare Detection with AI')
 #st.write("This demo shows how our smoke detection model works on the offshore flaring.")
 # Documentation
@@ -42,9 +35,9 @@ st.image("NOC logo.PNG")
 image_file = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
 
 # Add two tabs for two prediction type: 1) fire and some 2) fire and different type of smoke
-tab1, tab2 = st.tabs(["Normal", "Ringelmaan"])
-tab1.subheader("Fire and Smoke Detection")
-tab2.subheader("Fire and Ringelmaan Smoke Type Detection")
+tab1, tab2 = st.tabs(["Vision AI model I", "Vision AI model II"])
+tab1.subheader("AI Model I: Fire and Smoke Detection")
+tab2.subheader("AI Model II: Fire and Smoke Density Detection")
 
 with tab1:
     st.markdown("""This tab uses a Vision AI model that is trained to detect **fire/flames and smoke** in an 
