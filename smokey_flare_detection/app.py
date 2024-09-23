@@ -23,7 +23,7 @@ with st.sidebar:
     st.write('3) Click the "Detect" button to see the vision ai detection results.')
     st.divider()
 
-    confidence_threshold = st.slider('Set detection confidence Threshold', 0, 100, 40)
+    confidence_threshold = st.slider('Set detection confidence Threshold', 0, 100, 25)
 
 
 #st.subheader('Smokey Flare Detection with AI')
@@ -67,7 +67,7 @@ with tab1:
                     st.html(f'<p style="color:red;"> Results: {labels} detected in the image</p>')
 
 with tab2:
-    st.markdown("""This tab uses a Vision AI model that is trained to detect **fire/flames and 3 types of smoke: r1, r3 & r5** in an 
+    st.markdown("""This tab uses a Vision AI model that is trained to detect **fire/flames and various smoke density: r1 - low, r3 - medium & r5 - high** in an 
                 uploaded image, corresponding to ringelmaan 1, 3 and 5""")
 
     st.markdown("""This model is trained on approximately 370 images of offshore flare stacks with smoke and fire, and therefore 
