@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 from datetime import datetime
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///predictions.db'
 db = SQLAlchemy(app)
 
@@ -28,6 +30,24 @@ def add_prediction():
     db.session.add(new_prediction)
     db.session.commit()
     return jsonify({'message': 'Prediction saved'}), 201
+
+@app.route('/prediction', methods=['GET'])
+def get_predictions():
+    predictions = Prediction.query.all()
+    output = []
+    for prediction in predictions:
+        prediction_data = {
+            'class_name': prediction.class_name,
+            'bbox': {
+                'x': prediction.bbox_x,
+                'y': prediction.bbox_y,
+                'width': prediction.bbox_width,
+                'height': prediction.bbox_height
+            },
+            'timestamp': prediction.timestamp
+        }
+        output.append(prediction_data)
+    return jsonify(output)
 
 if __name__ == '__main__':
     db.create_all()

@@ -143,6 +143,9 @@ $(function () {
                 textWidth + 8,
                 textHeight + 4
             );
+
+            // Save the prediction to the database
+            savePred(prediction);
         });
 
         predictions.forEach(function (prediction) {
@@ -163,6 +166,26 @@ $(function () {
             );
         });
     };
+
+    const savePred = async function savePrediction(prediction) {
+        try {
+            const response = await fetch('http://localhost:5000/predictions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(prediction)
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            console.log('Prediction saved:', data);
+        } catch (error) {
+            console.error('Error saving prediction:', error);
+        }
+    }
+    
 
     var prevTime;
     var pastFrameTimes = [];
